@@ -1,13 +1,8 @@
-# FROM golang:alpine AS builder
+FROM golang:alpine
 
-# ADD . /tmp
-# WORKDIR /tmp
-# RUN go build -o app app.go
-
-FROM busybox
-
-# COPY --from=builder /work/app /opt/app
-COPY ./app /opt/app
+ADD . /tmp
+WORKDIR /tmp
+RUN go build -o /opt/app app.go
 
 ENTRYPOINT /opt/app
 
